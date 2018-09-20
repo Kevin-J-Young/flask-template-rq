@@ -2,19 +2,31 @@
 """
 This module implements the tasks to run.
 """
-import random
+# import random
 import time
-from flask import current_app
-from .. import r
+# from flask import current_app
+# from .. import r
 
 def run(task):
     if 'error' in task:
         time.sleep(1)
         1 / 0
     if task.startswith('Short'):
-        seconds = 1
+        result = wait_a_bit(1)
+    elif task.startswith('Long'):
+        result = wait_a_bit(9)
     else:
-        seconds = random.randint(2, current_app.config['MAX_TIME_TO_WAIT'])
-    time.sleep(seconds)
+        result = "unrecognized task request"
+        # seconds = 9 #random.randint(2, current_app.config['MAX_TIME_TO_WAIT'])
+    # time.sleep(seconds)
 #    r.hset('task:%s'%job_id, 'status', job.get_status())
+    # return '{} done in {}s'.format(task, seconds)
+    return result
+
+def new_custom_task():
+    time.sleep(2)
+    return 'new task happened!'
+
+def wait_a_bit(seconds):
+    time.sleep(seconds)
     return '{} done in {}s'.format(task, seconds)
