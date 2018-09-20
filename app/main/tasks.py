@@ -15,7 +15,7 @@ def run(task):
         result = wait_a_bit(1, task)
     elif task.startswith('Long'):
         result = wait_a_bit(9, task)
-    elif: task.startswith('The good one'):
+    elif task.startswith('The good one'):
         result = new_custom_task()
     else:
         result = "unrecognized task request"
